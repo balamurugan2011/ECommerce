@@ -1,196 +1,135 @@
-<h1 align="center">🌟 PURELY - E commerce web application 🌟</h1>
+# Full Stack E-Commerce Website with Angular and Spring Boot
 
-<p align="center">
-  <img alt="Static Badge" src="https://img.shields.io/badge/Spring%20Boot-green?style=for-the-badge">
-  <img alt="Static Badge" src="https://img.shields.io/badge/React.js-blue?style=for-the-badge">
-  <img alt="Static Badge" src="https://img.shields.io/badge/mongodb-darkgreen?style=for-the-badge">
-  <img alt="Static Badge" src="https://img.shields.io/badge/css-purple?style=for-the-badge">
-  <img alt="Static Badge" src="https://img.shields.io/badge/jwt-orange?style=for-the-badge">
-</p>
+### Desktop view
 
-# Table of content
+![Desktop Screenshot](./desktop_screenshot.png)
 
-1. [Architecture Diagram](#microservice-architecture-diagram)
-2. [Project Description](#project-description)
-    - [Features](#features)
-    - [Service Registry](#service-registry)
-    - [Api Gateway](#api-gateway)
-    - [Auth Service](#auth-service)
-    - [Category Service](#category-service)
-    - [Product Service](#product-service)
-    - [Cart Service](#cart-service)
-    - [Order Service](#order-service)
-    - [Notification Service](#notification-service)
-    - [Communication between services](#communication-between-services)
-3. [How to Run?](#how-to-run)
-3. [Screenshots](#screenshots)
+### Mobile view
 
-# Microservice architecture diagram
+![Mobile Screenshot](./mobile_screenshot.png)
 
-![purely_archi](https://github.com/user-attachments/assets/eb0466cf-b6a0-464b-89e6-f44ac481f536)
+This repository contains the code for the Full Stack E-Commerce Website developed as part of the Udemy course ["Full Stack: Angular and Java Spring Boot E-Commerce Website"](https://www.udemy.com/course/full-stack-angular-spring-boot-tutorial/) by [Chad Darby](https://github.com/darbyluv2code). The project leverages various technologies, including Java 11, Apache Maven, Hibernate, Spring Core, Spring Data, Spring REST, Spring Boot, Spring Security, TypeScript, Angular, Okta, Stripe, and Swagger API.
 
-# Project Description
+## Overview
+
+This E-Commerce website, known as "Luv2Shop," is a full-stack application built with Angular and Java Spring Boot. It includes a wide range of features and functionalities necessary for a modern online store. The project is designed to showcase best practices in building robust and secure web applications using the technologies mentioned above.
 
 ## Features
 
-- This is an e-commerce web application, a platform dedicated to health and wellness products using <a href="https://medium.com/javarevisited/getting-started-with-microservices-4266f440086f">Microservice architecture pattern</a>.
-  
-- Secure authentication and authorization functionalities using Spring Security and JWT. Integrated email verification during sign-up.
-  
-- Comprehensive product and category data management, including adding, editing, viewing, and searching.
-  
-- Intuitive interface allowing users to easily search and browse products, manage shopping carts, update quantities, and proceed through checkout.
-  
-- Enabled users to view order history and status, coupled with automated order confirmation emails.
-  
-- Offered users to pay upon delivery.
+- **User Authentication**: Utilizes Spring Security and Okta for secure user authentication and authorization.
 
-## Service Registry
+- **Product Catalog**: Allows users to browse and search for products with a well-structured product catalog.
 
-The <a href="./microservice-backend/service-registry">Service Registry</a> serves as a centralized repository for storing information about all the available services in the microservices architecture. 
+- **Shopping Cart**: Users can add products to their cart and proceed to checkout seamlessly.
 
-This includes details such as IP addresses, port numbers, and other metadata required for communication.
+- **Payment Integration**: Integration with Stripe for handling payments.
 
-As services start, stop, or scale up/down dynamically in response to changing demand, they update their registration information in the Service Registry accordingly.
+- **Swagger API Documentation**: Detailed API documentation using Swagger.
 
-## API Gateway
+- **Responsive Design**: Improved styling and responsive design for a better user experience.
 
+- **Frontend Hosting**: The frontend is hosted on Netlify for easy access.
 
-The <a href="./microservice-backend/api-gateway">API gateway</a> acts as a centralized entry point for clients, providing a unified interface to access the microservices.
+- **Backend Hosting**: The backend is hosted on Render.
 
-API gateway acts as the traffic cop of our microservices architecture. It routes incoming requests to the appropriate microservice, or instance based on predefined rules or configurations.
+- **Database Hosting**: The database is hosted on Railway.
 
+## Technologies Used
 
-## Auth Service
+- Java 11
+- Apache Maven
+- Hibernate
+- Spring Core
+- Spring Data
+- Spring REST
+- Spring Boot
+- Spring Security
+- TypeScript
+- Angular
+- Okta
+- Stripe
+- Swagger API
 
-The <a href="./microservice-backend/auth-service">Auth Service</a> is responsible for securely verifying user identities and facilitating token-based authentication.
+## Contributions
 
-| HTTP Method | Route Path | Parameters | Description |
-|----------|----------|----------|----------|
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/auth/signin`   | - | User login |
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/auth/signup`   | - | User registration   |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/auth/signup/verify`   | code | Validate registration one time password code |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/auth/isValidToken`   | token | Validate json web token  |
+### Added Swagger API Documentation
 
+I contributed by implementing Swagger API documentation to provide detailed information on the project's API endpoints. This documentation can be accessed at [Swagger API Documentation](https://luv2shop-backend.onrender.com/swagger-ui/index.html).
 
-## Category Service
+### Refine Styling and Responsive Design
 
-The <a href="./microservice-backend/category-service">Category Service</a> provides centralized data management and operations for product categories.
+I worked on enhancing the overall user interface by refining the styling and ensuring a responsive design. This improves the user experience and makes the website more visually appealing.
 
-| HTTP Method | Route Path | Parameters | Description | Authentication | Role | 
-|----------|----------|----------|----------| ----------| ----------|
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/admin/category/create`   | - | Create new category | Yes | Admin |
-| <img alt="Static Badge" src="https://img.shields.io/badge/put-yellow?style=for-the-badge"> | `/admin/category/edit`   | categoryId | Edit existing category | Yes | Admin |
-| <img alt="Static Badge" src="https://img.shields.io/badge/delete-red?style=for-the-badge"> | `/admin/category/delete`   | categoryId | Delete existing category | Yes | Admin |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/category/get/all`   | - | Get all categories | No | Admin/User/Non user |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/category/get/byId`   | categoryId | Get category by id | No |  Admin/User/Non user  |
+### Frontend Hosting on Netlify
 
-## Product Service
+The frontend of the project is hosted on Netlify for easy access.
 
-The <a href="./microservice-backend/product-service">Product Service</a> provides centralized data management and operations for available products.
+### Backend Hosting on Render
 
-| HTTP Method | Route Path | Parameters | Description | Authentication | Role (Admin/User) | 
-|----------|----------|----------|----------| ----------| ----------|
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/admin/product/add`   | - | Create new product | Yes | Admin |
-| <img alt="Static Badge" src="https://img.shields.io/badge/put-yellow?style=for-the-badge"> | `/admin/product/edit`   | productId | Edit existing product | Yes | Admin |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/product/get/all`   | - | Get all products | No |  Admin/User/Non user  |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/product/get/byId`   | productId | Get product by id | No |  Admin/User/Non user  |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/product/get/byCategory`   | categoryId | Get product by category | No |  Admin/User/Non user  |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/product/search`   | searchKey | Search products by key | No |  Admin/User/Non user  |
+The backend of the project is hosted on Render.
 
-## Cart Service
+### MySQL Database Hosting on Railway
 
-The <a href="./microservice-backend/cart-service">Cart Service</a> provides centralized data management and operations for user carts.
+The MySQL database is hosted on Railway.
 
-| HTTP Method | Route Path | Parameter | Description | Authentication | Role (Admin/User) | 
-|----------|----------|----------|----------| ----------| ----------|
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/cart/add`   | - | Add item to cart, update quantity | Yes | User |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/cart/get/byUser` | - | Get cart details by user | Yes | User |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/cart/get/byId` | cartId | Get cart details by cart id | Yes | User |
-| <img alt="Static Badge" src="https://img.shields.io/badge/delete-red?style=for-the-badge"> | `/cart/remove`   | productId | Remove an item from the cart | Yes | User |
-| <img alt="Static Badge" src="https://img.shields.io/badge/delete-red?style=for-the-badge"> | `/cart/clear/byId`   | cartId | Remove all the items from the cart | Yes | User |
+## Usage
 
-## Order Service
+To make the most of the Luv2Shop website, follow these steps:
 
-The <a href="./microservice-backend/order-service">Order Service</a> provides centralized data management and operations for orders.
+1. **Browse the Product Catalog:**
 
-| HTTP Method | Route Path | Parameter | Description | Authentication | Role (Admin/User) | 
-|----------|----------|----------|----------| ----------| ----------|
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/order/create`   | - | Place an order | Yes | User |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/order/get/byUser` | - | Get orders by user | Yes | User |
-| <img alt="Static Badge" src="https://img.shields.io/badge/get-blue?style=for-the-badge"> | `/order/get/all`   | - | Get all orders | Yes | Admin |
-| <img alt="Static Badge" src="https://img.shields.io/badge/delete-red?style=for-the-badge"> | `/order/cancel`   | orderId | Cancel the order | Yes | User |
+   - You can access the product catalog without logging in. Simply visit the website to explore the available products.
 
-## Notification Service
+2. **Login to Your Account:**
 
-The <a href="./microservice-backend/notification-service">Notification Service</a> provides centralized operations for send emails to user.
+   - To log in, use the following credentials:
+     - Email: lajec12115@hapincy.com
+     - Password: admin123456789
 
-| HTTP Method | Route Path | Description | 
-|----------|----------|----------|
-| <img alt="Static Badge" src="https://img.shields.io/badge/post-green?style=for-the-badge"> | `/notification/send`   | Send email | 
+3. **Access Additional Features with Login:**
 
-## Communication between services
+   - Logging in provides access to more sections of the website, such as:
+     - Member: Profile information.
+     - Orders: View your order history.
 
-OpenFeign, a declarative HTTP client library for Java is used to simplify the process of making HTTP requests to other microservices.
+4. **Add Items to Your Cart:**
 
-# How to run?
+   - When you find a product you want to purchase, click the "Add to Cart" button.
+   - You can review and modify the contents of your shopping cart at any time.
 
-## 📍Step 1: Fork and Clone the Repository
+5. **Proceed to Checkout:**
 
-1. Fork the repository to your GitHub account.
+   - Once you've added all the desired items to your cart, proceed to checkout.
+   - Provide the necessary shipping and billing information.
+   - Review your order to ensure it's accurate.
 
-2. Clone the forked repository to your local machine.
+6. **Make a Payment Using Stripe:**
 
-```sh
-git clone https://github.com/<your-username>/Fullstack-E-commerce-web-application
-```
+   For testing purposes, you can complete your purchase using the following test card details provided by Stripe:
 
-## 📍Step 2: Setting up databases.
+   - Card Number: 4242 4242 4242 4242
+   - Expiration Date: Any future date (e.g., 12/25)
+   - CVC: Any three-digit number (e.g., 123)
 
-Create the following databases in MongoDB:
+   These test card details simulate a successful payment and allow you to test the payment functionality without making actual charges to a credit card.
 
-- `purely_auth_service`
-- `purely_category_service`
-- `purely_product_service`
-- `purely_cart_service`
-- `purely_order_service`
+7. **Order Confirmation and Tracking:**
+   - After successfully placing your order, a confirmation popup will appear.
+   - Additionally, you can access the "Orders" section in your account to view all your orders.
 
-You can find sample data for products and categories to get started [here](./sample%20data/).
+## Demo
 
-## 📍Step 3: Setting up e-mail configurations
+You can preview Luv2Shop live demo at [luv2shop-ecommerce](https://luv2shop-ecommerce.netlify.app). The demo provides a hands-on experience of the website's features and functionality.
 
-In the `notification-service`, configure the following credentials in the [`application.properties`](./microservice-backend/notification-service/src/main/resources/application.properties) file to enable email sending functionality:
+## Video Demonstration
 
-```properties
-spring.mail.username=YOUR_USERNAME
-spring.mail.password=YOUR_PASSWORD
-```
+Watch a video demonstration of the Luv2Shop project [here](https://www.youtube.com/watch?v=jLlTbAgyTbQ).
 
-Replace `YOUR_USERNAME` and `YOUR_PASSWORD` with your actual email service credentials.
+## Contact Information
 
-## 📍Step 4: Run the microservices.
+If you have any questions, suggestions, or just want to get in touch, you can reach us at:
 
-1. First run [`service-registry`](./microservice-backend/service-registry/). Access the Eureka dashboard at [`http://localhost:8761`](http://localhost:8761).
+- Email: [balamuruganm1103@gmail.com](mailto:balamuruganm1103@gmail.com)
+- LinkedIn: [Balamurugan Mani](https://www.linkedin.com/in/balamuruganm2003/)
 
-2. Run the other services. Make sure all the services are up and running in the [Eureka Dashboard](http://localhost:8761).
-
-<img width="960" alt="Screenshot 2025-01-01 182328" src="https://github.com/user-attachments/assets/edfd6abf-f808-4f03-a96a-2e950a69b958" />
-
-## 📍Step 5: Run the frontend
-
-1. Navigate to [frontend direcory](./frontend/).
-```
-cd ./frontend
-```
-
-2. Install dependencies.
-```
-npm install
-```
-
-3. Run the app.
-```
-npm run dev
-```
-
-Access the application at [`http://localhost:5173/`](http://localhost:5173/)
+We appreciate your interest and look forward to your contributions and feedback!
