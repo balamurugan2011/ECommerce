@@ -121,9 +121,6 @@ To make the most of the Luv2Shop website, follow these steps:
 
 You can preview Luv2Shop live demo at [luv2shop-ecommerce](https://luv2shop-ecommerce.netlify.app). The demo provides a hands-on experience of the website's features and functionality.
 
-## Video Demonstration
-
-Watch a video demonstration of the Luv2Shop project [here](https://www.youtube.com/watch?v=jLlTbAgyTbQ).
 
 ## Contact Information
 
